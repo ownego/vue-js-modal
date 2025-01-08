@@ -2,14 +2,14 @@
   <div id="modals-container">
     <modal
       v-for="modal in modals"
-      :key="modal.id"
       v-bind="modal.modalAttrs"
+      :key="modal.id"
       v-on="modal.modalListeners"
       @closed="remove(modal.id)"
     >
       <component
-        :is="modal.component"
         v-bind="modal.componentAttrs"
+        :is="modal.component"
         v-on="modal.componentListeners"
         @close="$modal.hide(modal.modalAttrs.name, $event)"
       >

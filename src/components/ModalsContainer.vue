@@ -10,7 +10,7 @@
       <component
         :is="modal.component"
         v-bind="modal.componentAttrs"
-        v-on="$listeners"
+        v-on="modal.componentListeners"
         @close="$modal.hide(modal.modalAttrs.name, $event)"
       >
         <template v-for="(slot, key) in modal.componentSlots" #[key]="scope">
@@ -40,6 +40,7 @@ export default {
      * Register ModalContainer so that it was availiable inside the plugin
      */
     this.$root.__modalContainer = this
+    this.$modal.subscription.$emit('set-modal-container', this)
   },
   mounted() {
     this.$modal.subscription.$on('hide-all', () => {

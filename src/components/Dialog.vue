@@ -7,7 +7,7 @@
     :width="width"
     :shift-y="0.3"
     :adaptive="true"
-    :focus-trap="true"
+    :focus-trap="autoFocus"
     :clickToClose="clickToClose"
     :transition="transition"
     @before-open="beforeOpened"
@@ -50,6 +50,10 @@ export default {
     },
     transition: {
       type: String
+    },
+    focusTrap: {
+      type: Boolean,
+      default: false
     }
   },
   inject: ['$modal'],
@@ -70,6 +74,9 @@ export default {
       return {
         flex: `1 1 ${100 / this.buttons.length}%`
       }
+    },
+    autoFocus() {
+      return this.params.autoFocus ?? this.focusTrap;
     }
   },
   methods: {

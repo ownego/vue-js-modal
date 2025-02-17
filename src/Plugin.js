@@ -17,7 +17,8 @@ const Plugin = {
       mounted() {
         if (this.$root === this) {
           if (!plugin.context.root) {
-            plugin.setDynamicModalContainer(this)
+            plugin.context.root = this;
+            // plugin.setDynamicModalContainer(this)
           }
         }
       }

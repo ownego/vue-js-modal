@@ -113,7 +113,7 @@ export default {
     },
     scrollable: {
       type: Boolean,
-      default: true
+      default: false
     },
     focusTrap: {
       type: Boolean,

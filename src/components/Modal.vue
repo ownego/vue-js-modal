@@ -53,6 +53,7 @@
   </div>
 </template>
 <script>
+import { useId } from 'vue'
 import Resizer from './Resizer.vue'
 import {
   isInput,
@@ -210,6 +211,8 @@ export default {
 
       shiftLeft: 0,
       shiftTop: 0,
+
+      modalId: useId(),
 
       modal: {
         width: 0,
@@ -432,6 +435,10 @@ export default {
         this.overlayTransitionState === TransitionState.Leave &&
         this.modalTransitionState === TransitionState.Leave
       )
+    },
+
+    bodyModalClass() {
+      return `vm--${this.modalId}`;
     }
   },
 
@@ -666,6 +673,8 @@ export default {
         document.body.classList.add('vm--block-scroll')
       }
 
+      document.body.classList.add(this.bodyModalClass)
+
       let cancelEvent = false
 
       const cancel = () => {
@@ -704,6 +713,8 @@ export default {
       if (this.scrollable) {
         document.body.classList.remove('vm--block-scroll')
       }
+
+      document.body.classList.remove(this.bodyModalClass)
 
       let cancelEvent = false
 

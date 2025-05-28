@@ -234,6 +234,7 @@ export default {
    */
   beforeMount() {
     this.$modal.subscription.$on('toggle', this.onToggle)
+    this.$modal.subscription.$on('hide-all', this.onHideAll)
 
     window.addEventListener('resize', this.onWindowResize)
     window.addEventListener('orientationchange', this.onWindowResize)
@@ -849,6 +850,12 @@ export default {
 
       this.shiftLeft -= left - inRange(0, maxLeft, left)
       this.shiftTop -= top - inRange(0, maxTop, top)
+    },
+
+    onHideAll() {
+      if (this.visible) {
+        this.$modal.hide(this.name)
+      }
     }
   }
 }

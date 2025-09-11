@@ -53,7 +53,8 @@ export default {
       componentAttrs = {},
       componentSlots = {},
       modalAttrs = {},
-      modalListeners = {}
+      modalListeners = {},
+      componentListeners = {},
     ) {
       const id = generateId()
       const name = modalAttrs.name || PREFIX + id
@@ -64,7 +65,8 @@ export default {
         modalListeners,
         component,
         componentAttrs,
-        componentSlots
+        componentSlots,
+        componentListeners,
       })
 
       this.$nextTick(() => {

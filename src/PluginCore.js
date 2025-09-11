@@ -29,7 +29,8 @@ const PluginCore = (app, options = {}) => {
     componentProps,
     componentSlots,
     modalProps = componentSlots || {},
-    modalEvents
+    modalEvents,
+    componentEvents,
   ) => {
     const container = context.root?.__modalContainer
     const defaults = options.dynamicDefaults || {}
@@ -45,7 +46,8 @@ const PluginCore = (app, options = {}) => {
       componentProps,
       componentSlots,
       { ...defaults, ...modalProps },
-      modalEvents
+      modalEvents,
+      componentEvents,
     )
   }
 
